@@ -2,7 +2,7 @@
 
 def display_board(board):
     print("\n " *100)
-    
+
     print('   |   |')
     print(' ' + board[7] +  ' | ' + board[8] +  ' | ' + board[9])
     print('   |   |')
@@ -16,8 +16,8 @@ def display_board(board):
     print('   |   |')
 
 
-test_board = [''] * 10
-display_board(test_board)
+test_board = [' '] * 10
+print(display_board(test_board))
 
 
 def player_input():
@@ -31,6 +31,7 @@ def player_input():
     else:
         return ('O', 'X')
 
+# print(player_input())
 
 #Tuples unpacking
 player1_marker, player2_marker = player_input()
@@ -39,7 +40,7 @@ print(f'Player 1 is {player1_marker} and Player 2 is {player2_marker}')
 def place_marker(board, marker, position):
     board[position] = marker
 # place_marker(test_board, '$', 8)
-display_board(test_board)   
+# display_board(test_board)   
 
 def win_check(board, mark):
     return ((board[7] == mark and board[8] == mark and board[9] == mark) or # across the top
@@ -50,25 +51,29 @@ def win_check(board, mark):
     (board[9] == mark and board[6] == mark and board[3] == mark) or # down the right side
     (board[7] == mark and board[5] == mark and board[3] == mark) or # diagonal
     (board[9] == mark and board[5] == mark and board[1] == mark)) # diagonal
-print(win_check(test_board, 'X'))
+
+
+import random
 def choose_first():
-    import random
+  
     if random.randint(0, 1) == 0:
         return 'Player 1'
     else:
         return 'Player 2'
-print(choose_first())
+    
+
 
 def space_check(board, position):
     return board[position] == ' '
-print(space_check(test_board, 1))
+# print(space_check(test_board, 1))
 
 def full_board_check(board):
     for i in range(1,10):
         if space_check(board, i):
             return False # it means there is at least one empty space
     return True # IT means board is full
-print(full_board_check(test_board))
+
+# print(full_board_check(test_board))
 
 def player_choice(board):
     position = 0
@@ -76,12 +81,14 @@ def player_choice(board):
         position = int(input('Choose your next position: (1-9) '))
     return position
 
-print(player_choice(test_board))
+# print(player_choice(test_board))
 
 def replay():
     choice = input("Do you want to play again? Enter Yes or No: ")
     return choice.lower().startswith('y')   
-print(replay())
+
+
+print('Welcome to Tic Tac Toe!')
 
 # While loop to keep the game running
 while True:
@@ -137,7 +144,9 @@ while True:
                         break
                  else:
                         turn = 'Player 1'   
-         if not replay():
+
+
+     if not replay():
             break
 
                     
